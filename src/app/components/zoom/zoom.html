@@ -1,16 +1,36 @@
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->
 
-<div class="columns" style="margin-top: 90px">
+
+<!-- <div class="columns">
   <div class="column">
-    @if (!inSession) {
-    <div id="join-flow">
-      <a href="/"> <h1>Zoom Video SDK Sample Angular</h1></a>
-      <p>User interface offered by the Video SDK UI Toolkit</p>
 
-      <button (click)="getVideoSDKJWT()">Join Session</button>
-    </div>
-    }
 
-    <div class="zoom-session-wrapper" style="height: 650px" id="sessionContainer"></div>
   </div>
-</div>
+</div> -->
+
+
+<section [ngStyle]="myStyles" class="is-dark" style="margin: 0px;">
+
+    <div class="has-text-centered">
+      @if (!inSession) {
+        <div id="join-flow">
+            
+          <nav #navbar>
+            <!-- Your navbar content -->
+          </nav>
+        <p>{{ viewportHeight}}</p> 
+          {{windowWidth}}
+          {{windowHeight}}
+          <a > <h1>Zoom Video SDK Sample Angular</h1></a>
+          <p>User interface offered by the Video SDK UI Toolkit</p>
+    
+          <button (click)="getVideoSDKJWT()">Join Session</button>
+        </div>
+        }
+    
+        <div class="  zoom-session-wrapper " style="padding-bottom: 30px;"   id="sessionContainer"></div>
+    </div>
+
+</section>
+
+

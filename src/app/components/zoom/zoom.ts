@@ -1,17 +1,28 @@
-import { Component, Inject, NgZone, PLATFORM_ID, OnDestroy } from '@angular/core';
+import {
+  Component,
+  Inject,
+  NgZone,
+  PLATFORM_ID,
+  OnDestroy,
+  HostListener,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  AfterViewInit,
+} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { CustomizationOptions } from '@zoom/videosdk-ui-toolkit';
 import { Navbar } from '../navbar/navbar';
-
+import { ViewportRuler } from '@angular/cdk/scrolling';
 @Component({
   selector: 'app-zoom',
   templateUrl: './zoom.html',
   styleUrls: ['./zoom.scss'],
-  imports: [Navbar],
+  imports: [Navbar, CommonModule],
   // standalone: true
 })
-export class Zoom implements OnDestroy {
+export class Zoom implements OnDestroy, OnInit, AfterViewInit {
   isBrowser: boolean;
   sessionContainer: any;
   authEndpoint = 'https://zoom-sooty.vercel.app/api';
@@ -37,6 +48,20 @@ export class Zoom implements OnDestroy {
       'feedback',
     ],
     featuresOptions: {
+      feedback: {
+        enable: false,
+      },
+      header: { enable: false },
+      phone: {
+        enable: true,
+      },
+      recording: {
+        enable: true,
+      },
+      preview: {
+        enable: false,
+        isAllowModifyName: false,
+      },
       virtualBackground: {
         enable: true,
         virtualBackgrounds: [
@@ -47,9 +72,46 @@ export class Zoom implements OnDestroy {
       },
     },
   };
-  role = 0;
+  role = 1;
 
+  windowWidth: number = 0;
+  windowHeight: number = 0;
+  viewportHeight: number = 0;
+
+  @ViewChild('navbar', { static: false }) navbarElement!: ElementRef;
+  navbarHeight: number | undefined;
+
+  ngAfterViewInit() {
+    if (this.isBrowser) {
+      this.navbarHeight = this.navbarElement.nativeElement.offsetHeight;
+      console.log('Navbar Height:', this.navbarHeight);
+
+      this.viewportHeight = this.viewportRuler.getViewportSize().height;
+      // this.viewportHeight = this.viewportSize.height;
+      console.log('Viewport height============:', this.viewportHeight);
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(_event: Event): void {
+    this.windowWidth = window.innerWidth;
+    this.windowHeight = window.innerHeight;
+
+    // Perform actions based on new windowWidth
+  }
+  myStyles = {
+    'background-color': 'red',
+    ' height': this.windowHeight + 'px',
+    'font-weight': 'bold',
+  };
+  ngOnInit(): void {
+    if (this.isBrowser) {
+      this.windowWidth = window.innerWidth;
+      this.windowHeight = window.innerHeight;
+    }
+  }
   constructor(
+    private viewportRuler: ViewportRuler,
     @Inject(PLATFORM_ID) private platformId: Object,
 
     public httpClient: HttpClient,
