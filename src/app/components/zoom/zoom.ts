@@ -14,7 +14,7 @@ import { Navbar } from '../navbar/navbar';
 export class Zoom implements OnDestroy {
   isBrowser: boolean;
   sessionContainer: any;
-  authEndpoint = 'http://localhost:4000';
+  authEndpoint = 'https://zoom-sooty.vercel.app/api';
   inSession: boolean = false;
   config: CustomizationOptions = {
     videoSDKJWT: '',
