@@ -16,6 +16,7 @@
       <h1 class="title">Full Screen Content</h1>
       <p>This section fills the entire screen.</p>
       <button class="is-centered" (click)="getVideoSDKJWT()">Join Session</button>
+      {{windowHeight}}
     </div>
 
    
@@ -30,7 +31,7 @@
 
 }
   <section>
-    <div class="  zoom-session-wrapper "  id="sessionContainer"></div>
+    <div [ngStyle] = "{'height.px': windowHeight}" id="sessionContainer"></div>
 
 
   </section>
