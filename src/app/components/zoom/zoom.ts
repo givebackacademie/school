@@ -50,7 +50,7 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
       feedback: {
         enable: false,
       },
-      header: { enable: false },
+      header: { enable: true },
       phone: {
         enable: true,
       },
