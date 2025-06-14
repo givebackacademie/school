@@ -1,10 +1,16 @@
 {
+  "version": 2,
+  "public": true,
+  "name": "givebackschool",
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/"
     }
   ],
-  "devCommand": "npm run dev:ssr",
-  "outputDirectory": "dist/browser"
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "dist/givebackschool/**"
+    }
+  }
 }
