@@ -4,5 +4,7 @@
       "source": "/(.*)",
       "destination": "/"
     }
-  ]
+  ],
+  "devCommand": "npm run dev:ssr",
+  "outputDirectory": "dist/browser"
 }
