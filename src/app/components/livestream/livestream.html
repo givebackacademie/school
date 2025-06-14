@@ -1,0 +1,67 @@
+<div class="columns" style="background-color: rgb(238, 238, 238); padding: 0%; margin: 0%">
+  <div class="column is-6 is-offset-3" style="margin-top: 0px">
+    <!-- <div *ngIf="loading">Loading data...</div> -->
+    @defer (when !loading) {
+    <nav class="card is-boxed" style="width: 100%; background-color: white; margin-top: 30px">
+      <div class="card-content is-paddingless">
+        <span>Cours en Direct</span>
+        <span class="is-float-right has-text-success">Voir tout></span>
+      </div>
+    </nav>
+    <ng-carousel #carouselRef="ngCarousel" [config]="config">
+      <ng-template [ngCarouselSlide]="carouselRef" let-item>
+        <div
+          class="card"
+          style="min-width: 150px; min-height: 450px; margin-right: 10px; margin-top: 0px; margin-left: 5px"
+        >
+          <div class="card-image" style="pointer-events: none; height: 200px">
+            <figure class="image">
+              <img
+                src="{{ item.image }}"
+                alt="Placeholder image"
+                style="object-fit: cover; min-width: 150px; height: 200px"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <!-- <div class="media">
+                      <div class="media-left">
+                        <figure class="image is-48x48">
+                          <img
+                            src="https://bulma.io/assets/images/placeholders/96x96.png"
+                            alt="Placeholder image"
+                          />
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <p class="title is-4">John Smith</p>
+                        <p class="subtitle is-6">johnsmith</p>
+                      </div>
+                    </div> -->
+
+            <div class="content has-text-centered">
+              <div style="height: 150px">
+                <span style="font-size: 12pt; color: teal; font-weight: bold"
+                  >{{ item.startingDate.toMillis() | date:'fullDate' }}</span
+                >
+                <br />
+                <span style="font-size: 16pt; color: orange">{{ item.startingDate.toMillis() | date:' mm:ss' }}</span>
+                <p></p>
+                <p class="is-italic" style="line-height: 1.2; font-weight: bold">{{ item.liveStreamTitle }}</p>
+              </div>
+              <br />
+              <button routerLink="/live" style="background-color: orange" class="button is-fullwidth">Rejoindre</button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </ng-carousel>
+
+    }@placeholder {
+
+    <div style="height: 170px">
+      <ngx-shimmer-loading height="170" [shape]="'square'" [width]="'100%'"></ngx-shimmer-loading>
+    </div>
+    }
+  </div>
+</div>

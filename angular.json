@@ -18,9 +18,7 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -30,6 +28,9 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/cyan-orange.css",
+              "node_modules/@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css",
+
               "src/styles.scss"
             ],
             "server": "src/main.server.ts",
@@ -80,10 +81,7 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -92,12 +90,13 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["@angular/material/prebuilt-themes/cyan-orange.css", "src/styles.scss"]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

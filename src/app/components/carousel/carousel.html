@@ -1,0 +1,81 @@
+<div class="columns is-gapless is-multiline" style="margin: 0px; padding: 0px">
+  <div class="column is-full" style="margin-top: 85px">
+    @defer (when !loading) { @if(windowWidth < 700){
+    <ng-carousel #carouselRef="ngCarousel" [config]="config">
+      <ng-template [ngCarouselSlide]="carouselRef" let-item>
+        <div class="card" style="padding: 0.5px">
+          <div class="card-image">
+            <figure
+              class="image is-2by1"
+              style="  border-radius: 5px;  background-size: cover; background: url({{item.image}}); box-shadow: inset 0 0 0 2000px rgba(8, 8, 8, 0.4);"
+            ></figure>
+          </div>
+        </div>
+      </ng-template>
+    </ng-carousel>
+
+    }@else {
+
+    <ng-carousel #carouselRef="ngCarousel" [config]="config1">
+      <ng-template [ngCarouselSlide]="carouselRef" let-item>
+        <div class="card" style="padding: 0.5px">
+          <div class="card-image">
+            <figure
+              class="image is-2by1"
+              style="  border-radius: 5px;  background-size: cover; background: url({{item.image}}); box-shadow: inset 0 0 0 2000px rgba(8, 8, 8, 0.4);"
+            ></figure>
+          </div>
+        </div>
+      </ng-template>
+    </ng-carousel>
+
+    } } @placeholder {
+
+    <div style="height: 170px">
+      <ngx-shimmer-loading height="170" [shape]="'square'" [width]="'100%'"></ngx-shimmer-loading>
+    </div>
+
+    }
+  </div>
+
+  <div class="column is-full is-align-items-center">
+    <div class="card is-radiusless" style="min-height: 250px">
+      <div class="card-content">
+        <div class="content is-align-content-center is-align-items-center">
+          <div class="column is-8 is-offset-2 is-align-content-center">
+            <p class="has-text-weight-semibold has-text-centered pb-3 has-text-grey" style="font-size: 1.4rem">
+              Préparez-vous à l'arrivée <br />
+              de Give Back Academie !
+            </p>
+            <p class="has-text-grey has-text-centered" style="font-size: 1.1rem; line-height: 1.3">
+              Une école en ligne révolutionnaire dédiée à votre succès. Plongez dans une expérience d'apprentissage
+              captivante et pratique, conçue pour vous inspirer et vous propulser vers l'excellence dans tous les
+              domaines. Restez à l'affût pour le lancement imminent!
+            </p>
+
+            <p class="buttons is-centered pt-3">
+              <button class="button is-danger is-white">
+                <span class="icon">
+                  <fa-icon [icon]="faUser"></fa-icon>
+                </span>
+                <span class="has-text-white"> Nos Consultants</span>
+              </button>
+              <button class="button is-primary">
+                <span class="icon">
+                  <fa-icon [icon]="faComments"></fa-icon>
+                </span>
+                <span>Chat enn Direct</span>
+              </button>
+              <button class="button is-success">
+                <span class="icon is-small">
+                  <fa-icon [icon]="faBullhorn "></fa-icon>
+                </span>
+                <span>Nouvelles</span>
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<nav class="navbar is-fixed-top" style="margin-top: 18px; margin-left: 0px; margin-right: 0px">
+  <div
+    class="fixed-content has-text-centered"
+    style="
+      height: 18px;
+      width: 100%;
+      background-color: teal;
+      color: white;
+      font-size: 7pt;
+      padding-top: 3px;
+      padding-left: 0px;
+      font-weight: bold;
+      letter-spacing: 3pt;
+    "
+  >
+    Welcome to Giveback School
+  </div>
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://givabackacademie.com">
+      <img src="assets/logo.png" alt style="min-width: 100px; min-height: 50px; padding-left: 20px" />
+    </a>
+    <div
+      role="button"
+      (click)="toggleNavbar()"
+      #navBurger
+      style="background-color: teal; color: rgb(234, 229, 229)"
+      class="navbar-burger burger is-success"
+      aria-label="menu"
+      class="navbar-burger js-burger"
+      aria-expanded="false"
+      data-target="navbarBasicExample"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu" #navMenu>
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <a class="navbar-item">Maison</a>
+        <a class="navbar-item"> Conditions de Services </a>
+
+        <a class="navbar-item">Compte</a>
+        <a class="navbar-item">Contactez-nous</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link is-arrowless" style="background-color: teal; color: white; border-radius: 7px">
+            Rejoindre
+            <fa-icon [icon]="faAngleDown"></fa-icon>
+          </a>
+
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item">Whatsapp</a>
+            <hr class="navbar-divider" />
+            <a class="navbar-item">Youtube</a>
+            <hr class="navbar-divider" />
+            <a class="navbar-item">Instagram</a>
+            <hr class="navbar-divider" />
+            <div class="navbar-item">Facebook</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<div class="columns" style="margin-top: 75px; margin-left: 0px; margin-right: 0px">
+  <div class="column is-6 is-offset-3">
+    @defer (when !loading) { @for (item of course1$; track $index) {
+
+    <!-- <div class="card is-paddingless">
+      <div class="card-image is-paddingless">
+        <div class="image">
+          <figure>
+            <img src="{{ item.image }}" alt="" />
+          </figure>
+        </div>
+      </div>
+    </div> -->
+    <div class="container_row">
+      <div class="layer1" style="height: 260px">
+        <img src="{{ item.image }}" style="object-fit: cover; width: 100vw; height: 260px; border-radius: 15px" />
+      </div>
+      <div
+        class="layer2 p-2 pb-5 is-align-content-end has-text-right"
+        style="color: white; font-size: 9pt; line-height: 1.1"
+      >
+        <p class="is-size-5 p-2">{{ item.title }}</p>
+      </div>
+    </div>
+
+    }
+
+    <div class="tabs is-boxed is-fullwidth">
+      <ul>
+        <li [class.is-active]="activeTab === 'home'" (click)="setActive('home')">
+          <a>Topics</a>
+        </li>
+
+        <li [class.is-active]="activeTab === 'settings'" (click)="setActive('settings')">
+          <a>Description</a>
+        </li>
+      </ul>
+    </div>
+
+    @switch (activeTab) { @case ('home') { @for (item of course$.value; track $index) {
+
+    <div style="background-color: teal; min-height: 90px" class="card has-text-white">
+      <a routerLink="/player/{{ item.liveStreamVideo }}" class="panel-block is-active">
+        <span class="panel-icon">
+          <span class="mr-4">{{$index +1}}.</span>
+        </span>
+        {{item.title }}
+      </a>
+    </div>
+
+    } } @default { @for (item of course1$; track $index) {
+    <div>{{item.description}}</div>
+    } } } } @placeholder { }
+  </div>
+</div>
+<app-footer></app-footer>

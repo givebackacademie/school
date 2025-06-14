@@ -1,0 +1,14 @@
+.zoom-session-wrapper {
+  width: 100%;
+  height: 100vh;
+  background-color: black; /* Black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optional: force inner Zoom UI to match background */
+.zoom-videosdk-root,
+.zoom-videosdk-video {
+  background-color: black !important;
+}
