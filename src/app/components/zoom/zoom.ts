@@ -33,7 +33,6 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
     userName: 'Angular',
     sessionPasscode: '123',
     features: [
-      'preview',
       'video',
       'audio',
       'share',

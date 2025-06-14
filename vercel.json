@@ -7,10 +7,5 @@
       "source": "/(.*)",
       "destination": "/"
     }
-  ],
-  "functions": {
-    "api/index.js": {
-      "includeFiles": "dist/givebackschool/**"
-    }
-  }
+  ]
 }
