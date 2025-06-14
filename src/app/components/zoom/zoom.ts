@@ -115,7 +115,7 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
   ngOnInit(): void {
     if (this.isBrowser) {
       this.windowWidth = window.innerWidth;
-      this.windowHeight = window.innerHeight;
+      this.windowHeight = window.innerHeight - 78; // Adjusted for navbar height
     }
   }
   constructor(
