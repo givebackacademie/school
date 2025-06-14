@@ -30,7 +30,7 @@
             "styles": [
               "@angular/material/prebuilt-themes/cyan-orange.css",
               "node_modules/@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css",
-
+              "node_modules/bulma/bulma.scss",
               "src/styles.scss"
             ],
             "server": "src/main.server.ts",
@@ -44,8 +44,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2MB",
+                  "maximumError": "5MB"
                 },
                 {
                   "type": "anyComponentStyle",
