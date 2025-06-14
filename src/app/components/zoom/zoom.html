@@ -8,29 +8,34 @@
   </div>
 </div> -->
 
-
-<section [ngStyle]="myStyles" class="is-dark" style="margin: 0px;">
-
-    <div class="has-text-centered">
-      @if (!inSession) {
-        <div id="join-flow">
-            
-          <nav #navbar>
-            <!-- Your navbar content -->
-          </nav>
-        <p>{{ viewportHeight}}</p> 
-          {{windowWidth}}
-          {{windowHeight}}
-          <a > <h1>Zoom Video SDK Sample Angular</h1></a>
-          <p>User interface offered by the Video SDK UI Toolkit</p>
-    
-          <button (click)="getVideoSDKJWT()">Join Session</button>
-        </div>
-        }
-    
-        <div class="  zoom-session-wrapper " style="padding-bottom: 100px; padding-top: 50px;"   id="sessionContainer"></div>
+@if (!inSession) {
+<section class="hero is-fullheight is-dark">
+  <div class="hero-body">
+   
+    <div class="container has-text-centered">
+      <h1 class="title">Full Screen Content</h1>
+      <p>This section fills the entire screen.</p>
+      <button class="is-centered" (click)="getVideoSDKJWT()">Join Session</button>
     </div>
 
+   
+
+    
+ 
+    
+      <!-- <div class="  zoom-session-wrapper " style="padding-bottom: 10px; padding-top: 50px;"   id="sessionContainer"></div> -->
+    
+  </div>
 </section>
+
+}
+  <section>
+    <div class="  zoom-session-wrapper "  id="sessionContainer"></div>
+
+
+  </section>
+ 
+
+
 
 
