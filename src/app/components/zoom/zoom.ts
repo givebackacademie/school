@@ -146,7 +146,7 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
               console.log(data.signature);
               this.config.videoSDKJWT = data.signature;
               this.ngZone.runOutsideAngular(() => {
-                this.el.nativeElement.requestFullscreen();
+                // this.el.nativeElement.requestFullscreen();
                 uitoolkit.default.joinSession(this.sessionContainer, this.config);
                 uitoolkit.default.onSessionClosed(this.sessionClosed);
                 uitoolkit.default.onSessionDestroyed(this.sessionDestroyed);
