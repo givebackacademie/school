@@ -32,27 +32,14 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
     sessionName: 'test',
     userName: 'Angular',
     sessionPasscode: '123',
-    features: [
-      'video',
-      'audio',
-      'share',
-      'chat',
-      'livestream',
-      'users',
-      'pstn',
-      'crc',
-      'ltt',
-      'recording',
-      'settings',
-      'feedback',
-    ],
+    features: ['video', 'audio', 'share', 'chat', 'livestream', 'users', 'pstn', 'crc', 'ltt', 'recording', 'settings'],
     featuresOptions: {
       feedback: {
         enable: false,
       },
       header: { enable: true },
       phone: {
-        enable: true,
+        enable: false,
       },
       video: {
         enable: true,
