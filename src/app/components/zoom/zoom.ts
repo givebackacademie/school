@@ -119,6 +119,7 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
     }
   }
   constructor(
+    private el: ElementRef,
     private viewportRuler: ViewportRuler,
     @Inject(PLATFORM_ID) private platformId: Object,
 
@@ -158,6 +159,7 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
               console.log(data.signature);
               this.config.videoSDKJWT = data.signature;
               this.ngZone.runOutsideAngular(() => {
+                this.el.nativeElement.requestFullscreen();
                 uitoolkit.default.joinSession(this.sessionContainer, this.config);
                 uitoolkit.default.onSessionClosed(this.sessionClosed);
                 uitoolkit.default.onSessionDestroyed(this.sessionDestroyed);
