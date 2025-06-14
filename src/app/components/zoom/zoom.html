@@ -33,7 +33,7 @@
 }
   <section [ngStyle] = "{'height.px': windowHeight }" >
     <div style="height: 68px;"></div>
-    <div id="sessionContainer"></div>
+    <div [ngStyle] = "{'height.px': windowHeight -68}" id="sessionContainer"></div>
 
 
   </section>
