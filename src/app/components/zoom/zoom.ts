@@ -103,7 +103,7 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
   @HostListener('window:resize', ['$event'])
   onResize(_event: Event): void {
     this.windowWidth = window.innerWidth;
-    this.windowHeight = window.innerHeight;
+    this.windowHeight = window.innerHeight - 78;
 
     // Perform actions based on new windowWidth
   }
