@@ -55,6 +55,15 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
       phone: {
         enable: true,
       },
+      video: {
+        enable: true,
+      },
+      audio: {
+        enable: true,
+      },
+      share: {
+        enable: true,
+      },
       recording: {
         enable: true,
       },
