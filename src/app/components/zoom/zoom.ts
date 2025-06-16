@@ -30,8 +30,8 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
   inSession: boolean = false;
   config: CustomizationOptions = {
     videoSDKJWT: '',
-    sessionName: 'test',
-    userName: 'Angular',
+    sessionName: 'Fanta Course',
+    userName: 'Giveback',
     sessionPasscode: '123',
     features: ['video', 'audio', 'share', 'chat', 'livestream', 'pstn', 'crc', 'ltt', 'recording', 'settings'],
     featuresOptions: {
