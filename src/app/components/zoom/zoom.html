@@ -9,15 +9,15 @@
 </div> -->
 
 @if (!inSession) {
-  <app-navbar></app-navbar>
-<section class="hero is-fullheight is-dark">
+ <app-backnavbar></app-backnavbar>
+<section class="hero is-fullheight ">
   <div class="hero-body">
    
     <div class="container has-text-centered">
-      <h1 class="title">Full Screen Content</h1>
-      <p>This section fills the entire screen.</p>
-      <button class="is-centered" (click)="getVideoSDKJWT()">Join Session</button>
-      {{windowHeight}}
+      <p class="" style="font-weight: bold; font-size: 18pt;">Welcome to Giveback School </p>
+      <p class="is-italic pb-4">Live Lessons and Discussions.</p>
+      <button class="is-centered button is-primary is-size-5" (click)="getVideoSDKJWT()">Join Session</button>
+    
     </div>
 
    
@@ -43,11 +43,12 @@
 
 
     <div>
-<div style="height: 100px; padding: 90px;"></div>
+<!-- <div style="height: 100px; padding: 90px;"></div> -->
       
+<app-backnavbar></app-backnavbar>
       <span class="zoom-session-wrapper " style=" max-height: 500px; " id="sessionContainer">
 
-        <app-navbar></app-navbar>
+        
 
       </span>
     </div>

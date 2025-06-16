@@ -13,13 +13,14 @@ import {
 import { HttpClient } from '@angular/common/http';
 import { CommonModule, DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { CustomizationOptions } from '@zoom/videosdk-ui-toolkit';
-import { Navbar } from '../navbar/navbar';
+
 import { ViewportRuler } from '@angular/cdk/scrolling';
+import { BackNavbar } from '../back-navbar/back-navbar';
 @Component({
   selector: 'app-zoom',
   templateUrl: './zoom.html',
   styleUrls: ['./zoom.scss'],
-  imports: [Navbar, CommonModule],
+  imports: [CommonModule, BackNavbar],
   // standalone: true
 })
 export class Zoom implements OnDestroy, OnInit, AfterViewInit {
@@ -32,7 +33,7 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
     sessionName: 'test',
     userName: 'Angular',
     sessionPasscode: '123',
-    features: ['video', 'audio', 'share', 'chat', 'livestream', 'users', 'pstn', 'crc', 'ltt', 'recording', 'settings'],
+    features: ['video', 'audio', 'share', 'chat', 'livestream', 'pstn', 'crc', 'ltt', 'recording', 'settings'],
     featuresOptions: {
       feedback: {
         enable: false,

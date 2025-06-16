@@ -9,10 +9,12 @@ import { first, Observable } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { Navbar } from '../navbar/navbar';
 import { Footer } from '../footer/footer';
+import { BackNavbar } from '../back-navbar/back-navbar';
+import { Secondfooter } from '../secondfooter/secondfooter';
 
 @Component({
   selector: 'app-course-list',
-  imports: [Navbar, Footer, RouterLink],
+  imports: [RouterLink, BackNavbar, Secondfooter],
   templateUrl: './course-list.html',
   styleUrl: './course-list.scss',
 })

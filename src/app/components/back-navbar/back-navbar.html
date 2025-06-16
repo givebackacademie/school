@@ -1,32 +1,27 @@
-<nav
-  class=" navbar  is-fixed-top  "
-  style="
-    height: 18px;
-    width: 100%;
-    background-color: teal;
-    position: fixed important!;
-    color: white;
-    font-size: 7pt;
-    justify-content:center;
-    top: 0px;
-    padding-top: 3px;
-    padding-left: 0px;
-    font-weight: bold;
-    letter-spacing: 3pt;
-  "
+<nav class="navbar is-fixed-top" style="margin-left: 0px; margin-right: 0px">
+  <!-- <div
+    class="fixed-content has-text-centered"
+    style="
+      height: 18px;
+      width: 100%;
+      background-color: teal;
+      color: white;
+      font-size: 7pt;
+      padding-top: 3px;
+      padding-left: 0px;
+      font-weight: bold;
+      letter-spacing: 3pt;
+    "
   >
-  <span class="navbar-brand has-text-centered" style=" text-align: center;
-  display: relative;">
-
     Welcome to Giveback School
-  </span>
-
-  </nav>
-<nav class="navbar is-fixed-top" style="margin-top: 18px; margin-left: 0px; margin-right: 0px">
-  
+  </div> -->
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://givabackacademie.com">
-      <img src="assets/logo.png" alt style="min-width: 100px; min-height: 58px; padding-left: 20px" />
+    <a class="navbar-item">
+      <!-- <button (click)="goBack()">Back</button> -->
+      <a class="is-black" href="javascript:history.back()" style="all: unset">
+        <fa-icon [icon]="faArrowLeft"></fa-icon>Back</a
+      >
+      <img src="assets/logo.png" alt style="min-width: 100px; min-height: 40px; padding-left: 20px" />
     </a>
     <div
       role="button"

@@ -1,5 +1,6 @@
-<app-navbar></app-navbar>
+
 <div class="columns" style="margin-top: 75px; margin-left: 0px; margin-right: 0px">
+  <app-backnavbar></app-backnavbar>
   <div class="column is-6 is-offset-3">
     @defer (when !loading) { @for (item of course1$; track $index) {
 
@@ -54,4 +55,4 @@
     } } } } @placeholder { }
   </div>
 </div>
-<app-footer></app-footer>
+<app-secondfooter></app-secondfooter>

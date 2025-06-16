@@ -5,12 +5,14 @@ import { ItemService } from '../../firestore-service.service';
 import { NgxShimmerLoadingModule } from 'ngx-shimmer-loading';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { BackNavbar } from '../back-navbar/back-navbar';
 
 @Component({
   selector: 'app-livestream',
-  imports: [CarouselModule, NgxShimmerLoadingModule, CommonModule, RouterLink],
+  imports: [CarouselModule, NgxShimmerLoadingModule, CommonModule, RouterLink, BackNavbar],
   templateUrl: './livestream.html',
   styleUrl: './livestream.scss',
+  standalone: true,
 })
 export class Livestream {
   constructor(private itemService: ItemService) {}

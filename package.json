@@ -31,6 +31,7 @@
     "bulma": "^1.0.4",
     "express": "^5.1.0",
     "ng-carousel-cdk": "^2.1.0",
+    "ngx-back-button": "^20.0.0",
     "ngx-shimmer-loading": "^1.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
