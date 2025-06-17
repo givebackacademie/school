@@ -1,0 +1,127 @@
+<app-backnavbar></app-backnavbar>
+<div class="columns" style="margin: 0px; padding: 0px; padding-top: 120px">
+  <div class="column is-6 is-offset-3 is-justify-content-center">
+    <div class="card p-5">
+      <form (ngSubmit)="onSignUp()" [formGroup]="signupForm">
+        <div class="m-3">
+          <p class="has-text-centered pt-5 pb-4 is-italic" style="font-weight: bold; color: teal">Create New Account</p>
+          <div class="field">
+            <!-- <label class="label">Email</label> -->
+            <div class="card control has-icons-left has-icons-right">
+              <input
+                class="input has-shadow"
+                type="email"
+                placeholder="Email Address"
+                formControlName="email"
+                required
+              />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="envelop"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-exclamation-triangle"></i>
+              </span>
+            </div>
+            <!--------------------- Pasword   -->
+
+            <div class="card control has-icons-left has-icons-right mt-2">
+              <input class="input" type="password" placeholder="Password" formControlName="password" required />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="lopckOpen"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-exclamation-triangle"></i>
+              </span>
+            </div>
+
+            <!-----------------------first name---------------->
+            <div class="card control has-icons-left has-icons-right">
+              <input
+                class="input has-shadow"
+                type="text"
+                placeholder="First Name"
+                formControlName="firstName"
+                required
+              />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="envelop"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-exclamation-triangle"></i>
+              </span>
+            </div>
+
+            <!-----------------------last name---------------->
+            <div class="card control has-icons-left has-icons-right">
+              <input class="input has-shadow" type="text" placeholder="Last Name" formControlName="lastName" required />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="envelop"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-exclamation-triangle"></i>
+              </span>
+            </div>
+
+            <!-----------------------phone---------------->
+            <div class="card control has-icons-left has-icons-right">
+              <input class="input has-shadow" type="phone" placeholder="Mobile No:" formControlName="phone" required />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="envelop"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-exclamation-triangle"></i>
+              </span>
+            </div>
+            <!-----------------------Gender---------------->
+            <div class="card control has-icons-left has-icons-right">
+              <input class="input has-shadow" type="phone" placeholder="Mobile No:" formControlName="gender" required />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="envelop"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-exclamation-triangle"></i>
+              </span>
+            </div>
+            <!-- <p class="help is-danger">This email is invalid</p> -->
+
+            <button class="button is-success is-fullwidth has-text-white mt-5">Sign-Up</button>
+          </div>
+        </div>
+      </form>
+      <br />
+      <div class="has-text-centered pt-3 pb-4">
+        <p class="is-warning" style="font-size: 10pt">Already Have Account?</p>
+        <button routerLink="/login" class="is-rounded button mt-1 is-light has-text-success" style="color: teal">
+          Sign-In
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card mt-5">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Login</h2>
+          <form>
+            <div class="mb-3">
+              <input type="email" class="form-control" formControlName="email" placeholder="Email" required />
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control" formControlName="password" placeholder="Password" required />
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+            <div class="text-center mt-3">
+              <a routerLink="/signup" class="text-decoration-none">Create an account</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

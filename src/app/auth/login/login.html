@@ -1,0 +1,87 @@
+<app-backnavbar></app-backnavbar>
+<div class="columns" style="margin: 0px; padding: 0px; padding-top: 120px">
+  <div class="column is-6 is-offset-3 is-justify-content-center">
+    <div class="card p-5">
+      <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
+        <div class="m-3">
+          <p class="has-text-centered pt-5 pb-4 is-italic" style="font-weight: bold; color: teal">User Login</p>
+          <div class="field">
+            <!-- <label class="label">Email</label> -->
+            <div class="card control has-icons-left has-icons-right">
+              <input
+                class="input has-shadow"
+                type="email"
+                placeholder="Email Address"
+                formControlName="email"
+                required
+              />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="envelop"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-exclamation-triangle"></i>
+              </span>
+            </div>
+            <!--------------------- Pasword   -->
+
+            <div class="card control has-icons-left has-icons-right mt-2">
+              <input class="input" type="password" placeholder="Password" formControlName="password" required />
+              <span class="icon is-small is-left">
+                <fa-icon [icon]="lopckOpen"></fa-icon>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fas fa-exclamation-triangle"></i>
+              </span>
+            </div>
+            <!-- <p class="help is-danger">This email is invalid</p> -->
+
+            <button class="button is-success is-fullwidth has-text-white mt-5">Sign-In</button>
+          </div>
+        </div>
+      </form>
+      <div class="is-float-right pr-4">
+        <a
+          class="is-rounded mt-1 is-light is-italic has-text-warning"
+          style="color: teal; font-weight: bold; font-size: 11pt"
+        >
+          Forgot Password?
+        </a>
+      </div>
+      <br />
+      <div class="has-text-centered pt-3 pb-4">
+        <p class="is-warning" style="font-size: 10pt">Don't Have Account?</p>
+        <button routerLink="/register" class="is-rounded button mt-1 is-light has-text-success" style="color: teal">
+          Register New Account
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card mt-5">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Login</h2>
+          <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
+            <div class="mb-3">
+              <input type="email" class="form-control" formControlName="email" placeholder="Email" required />
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control" formControlName="password" placeholder="Password" required />
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+            <div class="text-center mt-3">
+              <a routerLink="/signup" class="text-decoration-none">Create an account</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

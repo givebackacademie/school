@@ -35,6 +35,9 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
     sessionPasscode: '123',
     features: ['video', 'audio', 'share', 'chat', 'livestream', 'pstn', 'crc', 'ltt', 'recording', 'settings'],
     featuresOptions: {
+      users: {
+        enable: false,
+      },
       feedback: {
         enable: false,
       },

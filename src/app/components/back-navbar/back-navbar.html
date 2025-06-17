@@ -65,6 +65,16 @@
             <div class="navbar-item">Facebook</div>
           </div>
         </div>
+        @if(user){
+          <div class="buttons"  (click)="signout()">
+            <a class="button is-primary">
+              <strong>Sign-Out</strong>
+            </a>
+           
+          </div>
+
+        }
+        
       </div>
     </div>
   </div>

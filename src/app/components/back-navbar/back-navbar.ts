@@ -9,6 +9,9 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Auth, authState, User } from '@angular/fire/auth';
+import { AuthService } from '../../auth-service';
 @Component({
   selector: 'app-backnavbar',
   imports: [FontAwesomeModule],
@@ -17,13 +20,22 @@ import { ActivatedRoute, Router } from '@angular/router';
   providers: [Location, { provide: LocationStrategy, useClass: PathLocationStrategy }],
 })
 export class BackNavbar {
-  private canGoBack: boolean;
+  user$: Observable<User | null>;
 
+  signout() {
+    this.authService.logout();
+  }
+  private canGoBack: boolean;
+  user;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private location: Location,
+    private auth: Auth,
+    private authService: AuthService,
   ) {
+    this.user$ = authState(this.auth);
+    this.user = this.auth.currentUser;
     this.canGoBack = !!this.router.getCurrentNavigation()?.previousNavigation;
   }
 
