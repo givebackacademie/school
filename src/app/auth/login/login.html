@@ -34,8 +34,14 @@
               </span>
             </div>
             <!-- <p class="help is-danger">This email is invalid</p> -->
+            <p class="help is-danger">{{ errorMessage() }}</p>
 
-            <button class="button is-success is-fullwidth has-text-white mt-5">Sign-In</button>
+            @if(loading()){
+              <button class="button is-success is-fullwidth is-loading mt-5" disabled>Loading</button>
+            }@else {
+              <button class="button is-success is-fullwidth has-text-white mt-5">Sign-In</button>
+            }
+        
           </div>
         </div>
       </form>

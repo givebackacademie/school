@@ -1,0 +1,22 @@
+<!-- <div class="image-uploader">
+  <input type="file" accept="image/*" (change)="onFileSelected($event)" capture="environment" />
+
+  <div *ngIf="previewUrl">
+    <p>Preview:</p>
+    <img [src]="previewUrl" alt="Selected Image" />
+  </div>
+</div> -->
+
+<div class="camera-wrapper">
+  <video #video autoplay></video>
+  <canvas #canvas style="display: none"></canvas>
+  <div class="buttons">
+    <button (click)="startCamera()">Start Camera</button>
+    <button (click)="capture()">Capture Photo</button>
+  </div>
+
+  @if(photo){
+
+  <img [src]="photo" alt="Captured Image" />
+  }
+</div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
@@ -18,7 +18,8 @@ export class Login {
   envelop = faEnvelope;
   lopckOpen = faLock;
   loginForm: FormGroup;
-  errorMessage: string = '';
+  errorMessage = signal('');
+  loading = signal(false);
 
   constructor(
     private fb: FormBuilder,
@@ -32,10 +33,13 @@ export class Login {
 
   async onLogin() {
     if (this.loginForm.valid) {
+      this.loading.set(true);
       try {
         await this.authService.login(this.loginForm.value.email, this.loginForm.value.password);
+        this.loading.set(false);
       } catch (error) {
-        this.errorMessage = 'Invalid email or password.';
+        this.loading.set(false);
+        this.errorMessage.set('Invalid email or password.');
       }
     }
   }

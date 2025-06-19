@@ -40,7 +40,7 @@ export class AuthService {
         // 🔄 Update the display name
         await updateProfile(user, { displayName: firstName });
         // console.log('Display name updated to:', displayName);
-        const usersRef = collection(this.firestore, 'users');
+        const usersRef = collection(this.firestore, 'users1');
         await addDoc(usersRef, {
           firstName: firstName,
           lastName: lastName,

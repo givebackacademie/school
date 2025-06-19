@@ -28,9 +28,11 @@
               }
             ],
             "styles": [
+              "node_modules/intl-tel-input/build/css/intlTelInput.css",
               "@angular/material/prebuilt-themes/cyan-orange.css",
               "node_modules/@zoom/videosdk-ui-toolkit/dist/videosdk-ui-toolkit.css",
               "node_modules/bulma/bulma.scss",
+
               "src/styles.scss"
             ],
             "server": "src/main.server.ts",
