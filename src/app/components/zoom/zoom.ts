@@ -34,10 +34,20 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
     userName: 'Giveback',
     sessionPasscode: '123',
     features: ['video', 'audio', 'share', 'chat', 'livestream', 'pstn', 'crc', 'ltt', 'recording', 'settings'],
+
     featuresOptions: {
-      users: {
-        enable: false,
-      },
+      // chat: { disableChat: true },
+      // share: { disableScreenShare: true },
+      // toolbar: { hideToolbar: true },
+      // users: {
+      //   enable: true,
+      // },
+      // viewMode: {
+      //   defaultViewMode: SuspensionViewType.Speaker,
+      //   enable: false,
+      //   viewModes: [SuspensionViewType.Speaker],
+      // },
+
       feedback: {
         enable: false,
       },
@@ -47,9 +57,11 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
       },
       video: {
         enable: true,
+        originalRatio: true,
+        enforceMultipleVideos: true,
       },
       audio: {
-        enable: true,
+        enable: false,
       },
       share: {
         enable: true,
@@ -71,7 +83,7 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
       },
     },
   };
-  role = 1;
+  role = 0;
 
   windowWidth: number = 0;
   windowHeight: number = 0;
@@ -143,7 +155,7 @@ export class Zoom implements OnDestroy, OnInit, AfterViewInit {
           .post(this.authEndpoint, {
             sessionName: this.config.sessionName,
             role: this.role,
-            videoWebRtcMode: 1,
+            videoWebRtcMode: 0,
           })
           .subscribe((data: any) => {
             if (data.signature) {

@@ -1,69 +1,38 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { io } from 'socket.io-client';
+// src/app/components/stream/stream.component.ts
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-video-chat',
-  templateUrl: './getstream.html',
-  styleUrls: ['./getstream.scss'],
+  selector: 'app-stream',
+  template: `
+    <div class="stream-container">
+      <video #videoElement autoplay playsinline muted [attr.id]="streamId"></video>
+    </div>
+  `,
+  styles: [
+    `
+      .stream-container {
+        position: relative;
+        width: 300px;
+        height: 200px;
+        background: #000;
+        margin: 10px;
+      }
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    `,
+  ],
 })
 export class Getstream implements OnInit {
-  @ViewChild('localVideo') localVideo!: ElementRef<HTMLVideoElement>;
-  @ViewChild('remoteVideo') remoteVideo!: ElementRef<HTMLVideoElement>;
+  @Input() stream!: MediaStream;
+  @Input() streamId!: string;
 
-  socket = io('https://stream-swart-sigma.vercel.app');
-  peerConnection: RTCPeerConnection | null = null;
-
-  async ngOnInit() {
-    await this.startLocalStream();
-
-    this.socket.on('signal', async (data) => {
-      if (!this.peerConnection) this.createPeerConnection();
-
-      if (data.offer) {
-        if (this.peerConnection) {
-          await this.peerConnection.setRemoteDescription(new RTCSessionDescription(data.offer));
-        }
-        const answer = await this.peerConnection?.createAnswer();
-        await this.peerConnection?.setLocalDescription(answer);
-        this.socket.emit('signal', { answer });
-      }
-
-      if (data.answer) {
-        await this.peerConnection?.setRemoteDescription(new RTCSessionDescription(data.answer));
-      }
-
-      if (data.iceCandidate) {
-        await this.peerConnection?.addIceCandidate(data.iceCandidate);
-      }
-    });
-  }
-
-  async startLocalStream() {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-    this.localVideo.nativeElement.srcObject = stream;
-
-    this.createPeerConnection();
-    stream.getTracks().forEach((track) => this.peerConnection!.addTrack(track, stream));
-  }
-
-  createPeerConnection() {
-    this.peerConnection = new RTCPeerConnection();
-
-    this.peerConnection.ontrack = (event) => {
-      const [remoteStream] = event.streams;
-      this.remoteVideo.nativeElement.srcObject = remoteStream;
-    };
-
-    this.peerConnection.onicecandidate = (event) => {
-      if (event.candidate) {
-        this.socket.emit('signal', { iceCandidate: event.candidate });
-      }
-    };
-  }
-
-  async call() {
-    const offer = await this.peerConnection!.createOffer();
-    await this.peerConnection!.setLocalDescription(offer);
-    this.socket.emit('signal', { offer });
+  ngOnInit() {
+    const video = document.getElementById(this.streamId) as HTMLVideoElement;
+    if (video) {
+      video.srcObject = this.stream;
+    }
   }
 }

@@ -1,2 +1,5 @@
-<video #video autoplay></video>
-<canvas #canvas hidden></canvas>
+<h2>Livestream App</h2>
+<video #localVideo autoplay muted playsinline></video>
+<video #remoteVideo autoplay playsinline></video>
+<button (click)="start()">Start Streaming</button>
+<button (click)="watch()">Watch Stream</button>
