@@ -1,4 +1,3 @@
-// import dotenv from 'dotenv';
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,
@@ -7,88 +6,61 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
-import { environment } from './environments/environment';
+import 'zone.js/node';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
-// import { initializeApp, applicationDefault, getApps } from 'firebase-admin/app';
+
 const app = express();
 const angularApp = new AngularNodeAppEngine();
-// import * as serviceAccount from '../serviceAccountKey.json';
-// Firestore instance
-require('dotenv').config();
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
 
-var admin = require('firebase-admin');
-if (admin.apps.length === 0) {
-  await admin.initializeApp({
-    // credential: admin.credential.cert(process.env['SECRET_KEYS']),
-    credential: admin.credential.cert({
-      // type: 'service_account',
-      project_id: environment.PROJECT_ID,
-      private_key: environment.PRIVATE_KEY,
-      client_email: environment.client_email,
-      // private_key: process.env['PRIVATE_KEY'],
-      // project_id: process.env['PROJECT_ID'],
-      // private_key_id: process.env['PRIVATE_KEY_ID'],
-      // client_email: process.env['client_email']?.toString(),
-      // client_id: process.env['client_id'],
-      // auth_uri: process.env['auth_uri'],
-      // token_uri: process.env['token_uri'],
-      // auth_provider_x509_cert_url: process.env['auth_provider_x509_cert_url'],
-      // client_x509_cert_url: process.env['client_x509_cert_url'],
-      // universe_domain: process.env['universe_domain'],
+import { initializeApp } from 'firebase/app';
 
-      // projectId: process.env.PROJECT_ID,
-      // clientEmail: process.env.CLIENT_EMAIL,
-      // privateKey: process.env.PRIVATE_KEY,
-    }),
-    // databaseURL: process.env.FIREBASE_DB_URL,
-  });
-}
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+const firebaseConfig = {
+  projectId: 'givebackacademy',
+  appId: '1:650578864838:web:31c961614dffba48cb85c7',
+  storageBucket: 'givebackacademy.appspot.com',
+  apiKey: 'AIzaSyCYoV_lBh_kJxpH6Uv4kQKlQO38C5wMfbc',
+  authDomain: 'givebackacademy.firebaseapp.com',
+  messagingSenderId: '650578864838',
+};
+
+const admin = initializeApp(firebaseConfig);
+const db = getFirestore(admin);
 
 app.get('/sitemap.xml', async (req, res) => {
-  const db = await admin.firestore();
-
   const allurls = [];
-  const snapshot = await db.collection('carousel').get();
+
+  const citiesCol = collection(db, 'carousel');
+  const snapshot = await getDocs(citiesCol);
   const posts = snapshot.docs.map((doc: any) => ({ id: doc.id, ...doc.data() }));
   const urls = posts
     .map((doc: any) => {
       const slug = doc['slug'];
       return `<url><loc>http://localhost:4200/post/${slug}
-      </loc>
-         <lastmod>2022-06-04</lastmod>
-      </url>`;
+    </loc>
+       <lastmod>2022-06-04</lastmod>
+    </url>`;
     })
     .join('\n');
   allurls.push(urls);
-  const snapshot2 = await db.collection('topics').get();
-  const posts2 = snapshot2.docs.map((doc: any) => ({ id: doc.id, ...doc.data() }));
-  const urls2 = posts2
-    .map((doc: any) => {
-      const slug = doc['slug']; // or use doc.data().slug
-      console.log(slug);
-      return `<url><loc>http://localhost:4200/post/${slug}
-      </loc>
-         <lastmod>2022-06-04</lastmod>
-      </url>`;
-    })
-    .join('\n');
-  allurls.push(urls2);
+  // const snapshot2 = await db.collection('topics').get();
+  // const posts2 = snapshot2.docs.map((doc: any) => ({ id: doc.id, ...doc.data() }));
+  // const urls2 = posts2
+  //   .map((doc: any) => {
+  //     const slug = doc['slug']; // or use doc.data().slug
+  //     console.log(slug);
+  //     return `<url><loc>http://localhost:4200/post/${slug}
+  //   </loc>
+  //      <lastmod>2022-06-04</lastmod>
+  //   </url>`;
+  //   })
+  //   .join('\n');
+  // allurls.push(urls2);
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-  <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${allurls.join('\n')}
-  </urlset>`;
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${allurls.join('\n')}
+</urlset>`;
   console.log(sitemap);
   res.header('Content-Type', 'application/xml');
   res.send(sitemap);

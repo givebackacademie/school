@@ -18,11 +18,9 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
-             "allowedCommonJsDependencies": [
-      "rxjs-compat"
-     ],
+
             "polyfills": ["zone.js"],
-            "allowedCommonJsDependencies": ["lodash"],
+
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
