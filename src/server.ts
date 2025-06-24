@@ -7,7 +7,7 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
-import { environment } from './environments/environment.development';
+import { environment } from './environments/environment';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 // import { initializeApp, applicationDefault, getApps } from 'firebase-admin/app';
