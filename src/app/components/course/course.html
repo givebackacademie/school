@@ -1,5 +1,5 @@
 <div class="colums is-full" style="background-color: rgb(238, 238, 238)">
-  <div class="column is-6 is-offset-3">
+  <div class="column is-8 is-offset-2">
     <nav class="card is-boxed" style="width: 100%; background-color: white; margin-top: 30px">
       <div class="card-content is-paddingless">
         <span>Lecons</span>
@@ -7,11 +7,48 @@
       </div>
     </nav>
   </div>
-  <div class="has-2-cols-mobile">
-    <div class="column is-6 is-offset-3">
-      <div class="grid">
+  <div class="has-2-cols-mobile  ">
+    <div class="column is-8 is-offset-2">
+      <div class="grid  is-col-min-29" >
         @for (item of course$.value; track $index) {
-        <div class="cell" style="border-radius: 25px">
+<div class="cell" style="width: 200px;">
+          <div class="card"  >
+            <div class="card-image">
+              <figure class="image is-2by3">
+                <img
+                width="200px"
+                  src="https://bulma.io/assets/images/placeholders/1280x960.png"
+                  alt="Placeholder image"
+                />
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-48x48">
+                    <img
+                      src="https://bulma.io/assets/images/placeholders/96x96.png"
+                      alt="Placeholder image"
+                    />
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="title is-4">John Smith</p>
+                  <p class="subtitle is-6">johnsmith</p>
+                </div>
+              </div>
+          
+              <div class="content">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
+                iaculis mauris. <a>bulmaio</a>. <a href="#">#css</a>
+                <a href="#">#responsive</a>
+                <br />
+                <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="cell" style="border-radius: 25px">
           <a routerLink="/course-list/{{ item.id }}">
             <div class="container_row">
               <div class="layer1" style="height: 160px">
@@ -28,7 +65,7 @@
               </div>
             </div>
           </a>
-        </div>
+        </div> -->
         }
       </div>
     </div>

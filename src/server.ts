@@ -7,7 +7,7 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
-// import { environments } from './environments/environment';
+import { environment } from './environments/environment.development';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 // import { initializeApp, applicationDefault, getApps } from 'firebase-admin/app';
@@ -31,7 +31,28 @@ require('dotenv').config();
 var admin = require('firebase-admin');
 if (admin.apps.length === 0) {
   await admin.initializeApp({
-    credential: admin.credential.cert(process.env['SECRET_KEYS']),
+    // credential: admin.credential.cert(process.env['SECRET_KEYS']),
+    credential: admin.credential.cert({
+      // type: 'service_account',
+      project_id: environment.PROJECT_ID,
+      private_key: environment.PRIVATE_KEY,
+      client_email: environment.client_email,
+      // private_key: process.env['PRIVATE_KEY'],
+      // project_id: process.env['PROJECT_ID'],
+      // private_key_id: process.env['PRIVATE_KEY_ID'],
+      // client_email: process.env['client_email']?.toString(),
+      // client_id: process.env['client_id'],
+      // auth_uri: process.env['auth_uri'],
+      // token_uri: process.env['token_uri'],
+      // auth_provider_x509_cert_url: process.env['auth_provider_x509_cert_url'],
+      // client_x509_cert_url: process.env['client_x509_cert_url'],
+      // universe_domain: process.env['universe_domain'],
+
+      // projectId: process.env.PROJECT_ID,
+      // clientEmail: process.env.CLIENT_EMAIL,
+      // privateKey: process.env.PRIVATE_KEY,
+    }),
+    // databaseURL: process.env.FIREBASE_DB_URL,
   });
 }
 
