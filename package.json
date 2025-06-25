@@ -39,9 +39,9 @@
     "intl-tel-input": "^19.5.7",
     "ng-carousel-cdk": "^2.1.0",
     "ngx-back-button": "^20.0.0",
-    "ngx-bootstrap": "^6.2.0",
+   
     "ngx-device-detector": "^10.0.2",
-    "ngx-intl-tel-input": "^17.0.0",
+   
     "ngx-shimmer-loading": "^1.0.0",
     "rxjs": "~7.8.0",
     "socket.io": "^4.8.1",
