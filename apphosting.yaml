@@ -1,0 +1,10 @@
+name: my-angular-app
+
+build:
+  command: |
+    npm install --force
+    npm run build -- --configuration production
+  dir: .
+  env:
+    - name: NODE_ENV
+      value: production
