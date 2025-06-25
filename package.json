@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^20.0.5",
     "@angular/cdk": "^20.0.2",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
@@ -38,7 +39,7 @@
     "intl-tel-input": "^19.5.7",
     "ng-carousel-cdk": "^2.1.0",
     "ngx-back-button": "^20.0.0",
-    "ngx-bootstrap": "^19.0.2",
+    "ngx-bootstrap": "^6.2.0",
     "ngx-device-detector": "^10.0.2",
     "ngx-intl-tel-input": "^17.0.0",
     "ngx-shimmer-loading": "^1.0.0",
