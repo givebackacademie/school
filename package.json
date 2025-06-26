@@ -42,7 +42,7 @@
    
     "ngx-device-detector": "^10.0.2",
    
-    "ngx-shimmer-loading": "^1.0.0",
+
     "rxjs": "~7.8.0",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
